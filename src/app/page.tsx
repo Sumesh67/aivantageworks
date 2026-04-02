@@ -16,7 +16,7 @@ export default function Home() {
         </div>
         <div style={{ display: "flex", gap: "12px" }}>
           <a href="https://stackstreak.aivantageworks.com" style={{ padding: "8px 16px", border: "1px solid #a78bfa", borderRadius: "8px", color: "#a78bfa", textDecoration: "none", fontSize: "14px", fontWeight: 600 }}>🔥 StackStreak</a>
-          <a href="https://createcolor.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ padding: "8px 16px", border: "1px solid #fb923c", borderRadius: "8px", color: "#fb923c", textDecoration: "none", fontSize: "14px", fontWeight: 600 }}>🎨 CreateNColor</a>
+          <a href="https://createandcolor.aivantageworks.com/" target="_blank" rel="noopener noreferrer" style={{ padding: "8px 16px", border: "1px solid #fb923c", borderRadius: "8px", color: "#fb923c", textDecoration: "none", fontSize: "14px", fontWeight: 600 }}>🎨 CreateNColor</a>
         </div>
       </nav>
 
@@ -74,7 +74,7 @@ export default function Home() {
               <a href="https://apps.apple.com/us/app/createncolor/id6760249757" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "linear-gradient(135deg, #ea580c, #c2410c)", color: "#fff", padding: "14px 28px", borderRadius: "10px", textDecoration: "none", fontWeight: 700, fontSize: "15px", boxShadow: "0 4px 20px rgba(234,88,12,0.4)" }}>
                 Download on iOS →
               </a>
-              <a href="https://createcolor.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", border: "1px solid #92400e", color: "#fb923c", padding: "14px 28px", borderRadius: "10px", textDecoration: "none", fontWeight: 700, fontSize: "15px" }}>
+              <a href="https://createandcolor.aivantageworks.com/" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", border: "1px solid #92400e", color: "#fb923c", padding: "14px 28px", borderRadius: "10px", textDecoration: "none", fontWeight: 700, fontSize: "15px" }}>
                 Try Web App
               </a>
             </div>
@@ -141,7 +141,7 @@ export default function Home() {
         <div style={{ color: "#4b5563", fontSize: "14px" }}>© 2026 AIVantageWorks · Made with ❤️ in Chicago</div>
         <div style={{ display: "flex", gap: "20px" }}>
           <a href="https://stackstreak.aivantageworks.com" style={{ color: "#6b7280", textDecoration: "none", fontSize: "14px" }}>StackStreak</a>
-          <a href="https://createcolor.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: "#6b7280", textDecoration: "none", fontSize: "14px" }}>CreateNColor</a>
+          <a href="https://createandcolor.aivantageworks.com/" target="_blank" rel="noopener noreferrer" style={{ color: "#6b7280", textDecoration: "none", fontSize: "14px" }}>CreateNColor</a>
           <a href="mailto:sumesh.pawar007@gmail.com" style={{ color: "#6b7280", textDecoration: "none", fontSize: "14px" }}>Contact</a>
         </div>
       </footer>
