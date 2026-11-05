@@ -1,46 +1,64 @@
 # AIVantageWorks — Design System
 
-Direction: **"Workshop notebook."** An AI studio that ships real things, not a slide deck.
-Warm paper, ink-black type, one vermilion signal color. Editorial serif headlines for trust,
-a clean sans for reading, mono labels for the "engineering" texture. Avoid the generic AI
-look (purple gradients, glowing orbs, sparkle emoji).
+**Direction: "Control room."** An AI engineering studio. Dark, precise, quietly alive:
+agents visibly working, a human visibly in control. Feels like the tools engineers trust
+(terminal, logs, status lights), explained in plain language for business owners.
 
-## Color
+**The one thing to remember:** *AI does the work; you approve what matters.*
+Every page shows that loop somewhere (agent log, approval step, ground rules).
+
+Avoid: purple/blue gradients, glowing orbs, sparkle emoji, stock robots, fake dashboards
+with invented numbers, client logos or testimonials we don't have.
+
+## Color (dark only)
 | Token | Hex | Use |
 |---|---|---|
-| paper | `#f7f5f0` | page background |
-| card | `#ffffff` | cards, diagram |
-| ink | `#16161a` | text, dark sections |
-| muted | `#5c5a55` | secondary text (6.4:1 on paper) |
-| line | `#e2ddd2` | borders, dividers |
-| signal | `#c2410c` | the one primary button per view, key highlights (white text 5.2:1) |
-| signal-hover | `#9a3412` | |
-| signal-tint | `#fbeee6` | small highlights, "live" pills |
-| leaf | `#2f6b4f` | "Live" / success states |
+| bg | `#0a0b0d` | page background |
+| surface | `#111317` | cards, panels |
+| raised | `#181b20` | hover, inner panels |
+| line | `#24282f` | borders, dividers |
+| text | `#f2f3f5` | primary text |
+| muted | `#9aa1ac` | secondary text (7.6:1 on bg) |
+| faint | `#6b727d` | labels, captions (4.6:1 on bg) |
+| signal | `#c6f432` | electric lime: primary CTA (black text), live/running states, key words |
+| signal-dim | `#c6f4321a` | lime tint backgrounds |
+| amber | `#f5b544` | "waiting for you" / human-approval state |
 
-Rule: signal is used sparingly — one primary CTA per screen, plus small accents.
+Rules: lime is the only bright color. One lime button per view. Amber only means
+"a person decides here".
 
 ## Typography
-- Display / headings: **Newsreader** (serif), 500–600, tight tracking (-0.02em)
-- Body: **Geist**, 16–18px, line-height 1.6
-- Labels / eyebrows / step numbers: **Geist Mono**, 12–13px, uppercase, +0.08em tracking
+- Display / headings: **Schibsted Grotesk** 600–700, tracking -0.03em
+- Body / UI: **Geist** 400–500, 16–18px, line-height 1.6
+- Mono (labels, logs, step numbers, status): **Geist Mono**, 12–13px, uppercase labels +0.08em
 
-Scale: h1 `clamp(2.75rem, 6vw, 4.75rem)`, h2 `clamp(2rem, 4vw, 3rem)`, h3 1.25rem.
+Scale: h1 `clamp(2.75rem, 7vw, 5.5rem)` line-height 0.98; page h1 `clamp(2.5rem, 5vw, 4rem)`;
+h2 `clamp(2rem, 4vw, 3rem)`; h3 1.25–1.5rem.
 
 ## Layout & spacing
-- Max width 1160px, 24px gutters (mobile 20px)
-- 8px base; section padding 96px desktop / 64px mobile
-- Radius: controls 8px, cards 14px
-- Borders over shadows. One soft shadow only on the hero diagram.
+- Max width 1200px; gutters 20px mobile / 24px desktop
+- Sections 96px desktop / 64px mobile, separated by 1px `line` borders
+- Radius: controls 8px, cards 12px
+- Faint 64px grid texture behind heroes only (≤4% opacity), masked to fade out
+- No drop shadows; depth comes from surface steps and borders. One lime glow allowed
+  behind the hero agent log.
 
 ## Components
-- **Workflow diagram** (hero): steps as rows (trigger → AI step → human approval → output), mono labels, a vermilion "you approve" step. Shows the promise: AI does the busywork, people stay in control.
-- **Product cards**: status pill (Live / Early access / Service), name, one-line, CTA link.
-- **Buttons**: primary = signal fill; secondary = ink outline.
+- **Agent log** (home hero): mono terminal panel that types out a workflow
+  (read → draft → *waiting for your approval* → sent). Static for reduced motion.
+- **Page header**: mono eyebrow, big grotesk h1, one-paragraph lead.
+- **Cards**: surface bg, line border, hover → raised + lighter border.
+- **Status pills**: Live (lime), Early access (amber), Service (outline).
+- **CTA band**: closes every page — "Tell us the one task your team dreads."
+- **Buttons**: primary = lime fill, black text; secondary = line outline, text color.
+
+## Pages
+`/` overview · `/services` · `/products` · `/about` · `/contact`. Shared header + footer.
+No personal names on the site; the studio speaks as "we".
 
 ## Voice
-Plain, specific, no hype. Never invent client results, logos, testimonials or metrics.
-Say what we do and how; let the shipped products be the proof.
+Plain, specific, no hype. Never invent client results or metrics.
 
 ## Motion
-Minimal: 150ms color/translate on hover. Respect `prefers-reduced-motion`.
+Agent log typing + blinking cursor; 150ms hover transitions. All motion off under
+`prefers-reduced-motion`.

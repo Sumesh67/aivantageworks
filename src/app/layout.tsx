@@ -1,28 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Newsreader } from "next/font/google";
+import { Geist, Geist_Mono, Schibsted_Grotesk } from "next/font/google";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SITE } from "@/lib/site";
 import "./globals.css";
 
 const sans = Geist({ subsets: ["latin"], variable: "--font-geist" });
 const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
-const serif = Newsreader({
+const display = Schibsted_Grotesk({
   subsets: ["latin"],
-  variable: "--font-newsreader",
-  weight: ["500", "600"],
-  style: ["normal", "italic"],
+  variable: "--font-schibsted",
+  weight: ["600", "700"],
 });
 
-const title = "AIVantageWorks — AI automation & workflows for small businesses";
-const description =
-  "AIVantageWorks is an AI studio. We help businesses find the busywork AI can take off their plate, then build the automations, agents and workflows to do it — with people approving what matters. We also build our own AI products.";
+const title = "AIVantageWorks — AI automation & workflows for businesses";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aivantageworks.com"),
-  title,
-  description,
+  metadataBase: new URL(SITE.url),
+  title: { default: title, template: "%s · AIVantageWorks" },
+  description: SITE.description,
   keywords: [
     "AI automation consulting",
     "AI workflow automation",
-    "AI agents for small business",
+    "AI agents for business",
     "AI consultant",
     "answer engine optimization",
     "AEO audit",
@@ -30,18 +30,22 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title,
-    description,
-    url: "https://aivantageworks.com",
+    description: SITE.description,
+    url: SITE.url,
     siteName: "AIVantageWorks",
     type: "website",
   },
-  twitter: { card: "summary_large_image", title, description },
+  twitter: { card: "summary_large_image", title, description: SITE.description },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable} ${serif.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${sans.variable} ${mono.variable} ${display.variable}`}>
+      <body className="flex min-h-screen flex-col">
+        <SiteHeader />
+        <main className="flex-1">{children}</main>
+        <SiteFooter />
+      </body>
     </html>
   );
 }

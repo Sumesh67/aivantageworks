@@ -2,35 +2,55 @@
 
 /* Tokens: see DESIGN.md */
 @theme {
-  --color-paper: #f7f5f0;
-  --color-card: #ffffff;
-  --color-ink: #16161a;
-  --color-muted: #5c5a55;
-  --color-line: #e2ddd2;
-  --color-signal: #c2410c;
-  --color-signal-hover: #9a3412;
-  --color-signal-tint: #fbeee6;
-  --color-leaf: #2f6b4f;
-  --color-leaf-tint: #e6f0ea;
+  --color-bg: #0a0b0d;
+  --color-surface: #111317;
+  --color-raised: #181b20;
+  --color-line: #24282f;
+  --color-text: #f2f3f5;
+  --color-muted: #9aa1ac;
+  --color-faint: #6b727d;
+  --color-signal: #c6f432;
+  --color-signal-dim: #c6f4321a;
+  --color-amber: #f5b544;
 
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-display: var(--font-schibsted), var(--font-geist), ui-sans-serif, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
-  background: var(--color-paper);
-  color: var(--color-ink);
+  background: var(--color-bg);
+  color: var(--color-text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--color-signal-tint);
+  background: var(--color-signal);
+  color: var(--color-bg);
+}
+
+/* Faint grid behind heroes */
+.grid-texture {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 40%, transparent 100%);
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.cursor-blink {
+  animation: blink 1s steps(1) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -40,6 +60,7 @@ body {
   *,
   *::before,
   *::after {
+    animation: none !important;
     transition: none !important;
   }
 }
