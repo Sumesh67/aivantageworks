@@ -1,26 +1,45 @@
 @import "tailwindcss";
 
-:root {
-  --background: #fffbf9;
-  --foreground: #1a1a2e;
-}
+/* Tokens: see DESIGN.md */
+@theme {
+  --color-paper: #f7f5f0;
+  --color-card: #ffffff;
+  --color-ink: #16161a;
+  --color-muted: #5c5a55;
+  --color-line: #e2ddd2;
+  --color-signal: #c2410c;
+  --color-signal-hover: #9a3412;
+  --color-signal-tint: #fbeee6;
+  --color-leaf: #2f6b4f;
+  --color-leaf-tint: #e6f0ea;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-}
-
-body {
-  background: #fffbf9;
-  color: #1a1a2e;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  min-height: 100vh;
-}
-
-* {
-  box-sizing: border-box;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-signal-tint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
 }

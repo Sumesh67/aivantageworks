@@ -1,44 +1,46 @@
 import type { Metadata } from "next";
+import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
 
+const sans = Geist({ subsets: ["latin"], variable: "--font-geist" });
+const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
+const serif = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-newsreader",
+  weight: ["500", "600"],
+  style: ["normal", "italic"],
+});
+
+const title = "AIVantageWorks — AI automation & workflows for small businesses";
+const description =
+  "AIVantageWorks is an AI studio. We help businesses find the busywork AI can take off their plate, then build the automations, agents and workflows to do it — with people approving what matters. We also build our own AI products.";
+
 export const metadata: Metadata = {
-  title: "AIVantageWorks — AI Apps for Real Life",
-  description:
-    "AIVantageWorks is a solo AI app studio building simple, free, genuinely useful tools. Home of StackStreak (savings & streaks), CreateNColor (AI coloring pages for kids), and Inviteable (beautiful digital invitations).",
+  metadataBase: new URL("https://aivantageworks.com"),
+  title,
+  description,
   keywords: [
-    "AI apps",
-    "StackStreak",
-    "CreateNColor",
-    "Inviteable",
-    "savings app",
-    "coloring page generator",
-    "digital invitations",
-    "free AI tools",
+    "AI automation consulting",
+    "AI workflow automation",
+    "AI agents for small business",
+    "AI consultant",
+    "answer engine optimization",
+    "AEO audit",
     "AIVantageWorks",
   ],
   openGraph: {
-    title: "AIVantageWorks — AI Apps for Real Life",
-    description:
-      "Free AI-powered tools that solve real problems. StackStreak for savings streaks, CreateNColor for kids' coloring pages, Inviteable for beautiful digital invitations.",
+    title,
+    description,
     url: "https://aivantageworks.com",
     siteName: "AIVantageWorks",
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "AIVantageWorks — AI Apps for Real Life",
-    description:
-      "Free AI-powered tools that solve real problems. StackStreak + CreateNColor + Inviteable.",
-  },
+  twitter: { card: "summary_large_image", title, description },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${sans.variable} ${mono.variable} ${serif.variable}`}>
       <body>{children}</body>
     </html>
   );
