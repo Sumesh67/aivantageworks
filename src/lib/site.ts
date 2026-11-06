@@ -4,7 +4,7 @@ export const SITE = {
     "AIVantageWorks is an AI studio. We help businesses find the busywork AI can take off their plate, then build the automations, agents and workflows to do it — with people approving what matters. We also build our own AI products.",
 };
 
-export const CONTACT_EMAIL = "sumesh.pawar007@gmail.com";
+export const CONTACT_EMAIL = "support@aivantageworks.com";
 
 export const REVIEW_MAILTO = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
   "Free AI workflow review",
