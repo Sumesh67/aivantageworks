@@ -1,6 +1,6 @@
 # AIVantageWorks — Design System
 
-**Direction: "Control room."** An AI engineering studio. Dark, precise, quietly alive:
+**Direction: "Control room."** An AI engineering studio. Precise, quietly alive, with dark "control room" bookends around bright, readable pages:
 agents visibly working, a human visibly in control. Feels like the tools engineers trust
 (terminal, logs, status lights), explained in plain language for business owners.
 
@@ -10,22 +10,26 @@ Every page shows that loop somewhere (agent log, approval step, ground rules).
 Avoid: purple/blue gradients, glowing orbs, sparkle emoji, stock robots, fake dashboards
 with invented numbers, client logos or testimonials we don't have.
 
-## Color (dark only)
-| Token | Hex | Use |
-|---|---|---|
-| bg | `#0a0b0d` | page background |
-| surface | `#111317` | cards, panels |
-| raised | `#181b20` | hover, inner panels |
-| line | `#24282f` | borders, dividers |
-| text | `#f2f3f5` | primary text |
-| muted | `#9aa1ac` | secondary text (7.6:1 on bg) |
-| faint | `#6b727d` | labels, captions (4.6:1 on bg) |
-| signal | `#c6f432` | electric lime: primary CTA (black text), live/running states, key words |
-| signal-dim | `#c6f4321a` | lime tint backgrounds |
-| amber | `#f5b544` | "waiting for you" / human-approval state |
+## Color — light pages, dark bookends
+Pages are light. The header, each page's hero, and the closing CTA band use the
+`.theme-dark` class, which re-scopes the same tokens to dark values (globals.css).
 
-Rules: lime is the only bright color. One lime button per view. Amber only means
-"a person decides here".
+| Token | Light | Dark (`.theme-dark`) | Use |
+|---|---|---|---|
+| bg | `#ffffff` | `#0a0b0d` | background |
+| surface | `#f5f6f7` | `#111317` | cards, alternating sections |
+| raised | `#eceef1` | `#181b20` | hover |
+| line | `#e2e5e9` | `#24282f` | borders |
+| text | `#0e1013` | `#f2f3f5` | primary text |
+| muted | `#4b5260` | `#9aa1ac` | secondary text |
+| faint | `#6b7280` | `#7d8590` | labels, captions |
+| signal | `#c6f432` | same | lime fill: primary buttons, dots |
+| signal-ink | `#4d7c0f` | `#c6f432` | lime used as text/icons (readable on each) |
+| on-signal | `#0a0b0d` | same | text on lime buttons |
+| amber-ink | `#b45309` | `#f5b544` | "waiting for you" / human-approval state |
+
+Rules: one lime button per view. Never put `signal` (bright lime) as text on light
+backgrounds — use `signal-ink`. Amber only means "a person decides here".
 
 ## Typography
 - Display / headings: **Schibsted Grotesk** 600–700, tracking -0.03em

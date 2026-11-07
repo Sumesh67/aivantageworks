@@ -31,10 +31,10 @@ export function H2({ children }: { children: React.ReactNode }) {
 }
 
 const focus =
-  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal";
+  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal-ink";
 
 export function PrimaryButton({ href, children }: { href: string; children: React.ReactNode }) {
-  const cls = `inline-flex items-center gap-2 rounded-lg bg-signal px-5 py-3 font-medium text-bg transition-colors hover:bg-white ${focus}`;
+  const cls = `inline-flex items-center gap-2 rounded-lg bg-signal px-5 py-3 font-medium text-on-signal transition-colors hover:bg-signal-hover ${focus}`;
   return href.startsWith("/") ? (
     <Link href={href} className={cls}>
       {children}
@@ -67,7 +67,7 @@ export function PageHeader({
   lead: React.ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-line">
+    <section className="theme-dark relative overflow-hidden border-b border-line bg-bg">
       <div className="grid-texture absolute inset-0" aria-hidden />
       <Container className="relative pt-20 pb-16 lg:pt-28 lg:pb-20">
         <Eyebrow>{eyebrow}</Eyebrow>
@@ -81,8 +81,8 @@ export function PageHeader({
 }
 
 const statusStyle: Record<ProductStatus, string> = {
-  Live: "bg-signal-dim text-signal",
-  "Early access": "bg-amber/10 text-amber",
+  Live: "bg-signal-dim text-signal-ink",
+  "Early access": "bg-amber/10 text-amber-ink",
   Service: "border border-line text-muted",
 };
 
@@ -98,7 +98,7 @@ export function ProductCard({ p }: { p: Product }) {
       </div>
       <h3 className="mt-5 font-display text-2xl font-semibold tracking-[-0.02em]">{p.name}</h3>
       <p className="mt-2 flex-1 leading-relaxed text-muted">{p.body}</p>
-      <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-signal">
+      <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-signal-ink">
         {p.cta}
         {external ? (
           <ArrowUpRight className="size-4" aria-hidden />
@@ -122,7 +122,7 @@ export function ProductCard({ p }: { p: Product }) {
 
 export function CtaBand() {
   return (
-    <section className="border-t border-line">
+    <section className="theme-dark border-t border-line bg-bg">
       <Container className="py-20 lg:py-28">
         <div className="relative overflow-hidden rounded-2xl border border-line bg-surface px-6 py-14 text-center sm:px-12">
           <div className="grid-texture absolute inset-0" aria-hidden />

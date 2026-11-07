@@ -32,7 +32,7 @@ export default function ContactPage() {
           <ol className="mt-6 divide-y divide-line border-y border-line">
             {asks.map(([title, body], i) => (
               <li key={title} className="flex gap-5 py-5">
-                <span className="font-mono text-sm text-signal">0{i + 1}</span>
+                <span className="font-mono text-sm text-signal-ink">0{i + 1}</span>
                 <div>
                   <p className="font-medium">{title}</p>
                   <p className="mt-1 text-muted">{body}</p>
@@ -45,7 +45,7 @@ export default function ContactPage() {
           </p>
         </div>
         <div className="h-fit rounded-xl border border-line bg-surface p-7">
-          <span className="grid size-10 place-items-center rounded-lg bg-signal-dim text-signal">
+          <span className="grid size-10 place-items-center rounded-lg bg-signal-dim text-signal-ink">
             <Mail className="size-5" aria-hidden />
           </span>
           <h2 className="mt-5 font-display text-2xl font-semibold tracking-[-0.02em]">Email us</h2>

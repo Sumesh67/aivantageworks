@@ -8,7 +8,7 @@ export function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2 font-display text-lg font-bold tracking-[-0.02em]">
       <span className="grid size-6 place-items-center rounded-md bg-signal" aria-hidden>
-        <span className="size-2 rounded-sm bg-bg" />
+        <span className="size-2 rounded-sm bg-on-signal" />
       </span>
       AIVantageWorks
     </Link>
@@ -18,7 +18,7 @@ export function Logo() {
 export function SiteHeader() {
   const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-30 border-b border-line bg-bg/80 backdrop-blur-md">
+    <header className="theme-dark sticky top-0 z-30 border-b border-line bg-bg/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-5 py-3.5 sm:px-6">
         <Logo />
         <nav aria-label="Main" className="hidden items-center gap-1 text-sm md:flex">
@@ -40,7 +40,7 @@ export function SiteHeader() {
         </nav>
         <Link
           href="/contact"
-          className="rounded-lg bg-signal px-4 py-2 text-sm font-medium text-bg transition-colors hover:bg-white"
+          className="rounded-lg bg-signal px-4 py-2 text-sm font-medium text-on-signal transition-colors hover:bg-signal-hover"
         >
           Book a call
         </Link>

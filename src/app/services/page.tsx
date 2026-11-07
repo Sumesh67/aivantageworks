@@ -47,7 +47,7 @@ export default function ServicesPage() {
               <ul className="mt-4 space-y-3">
                 {s.deliverables.map((d) => (
                   <li key={d} className="flex gap-3 text-sm leading-relaxed">
-                    <Check className="mt-0.5 size-4 shrink-0 text-signal" aria-hidden />
+                    <Check className="mt-0.5 size-4 shrink-0 text-signal-ink" aria-hidden />
                     {d}
                   </li>
                 ))}
@@ -66,7 +66,7 @@ export default function ServicesPage() {
           <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {STEPS.map(([title, body], i) => (
               <li key={title} className="border-t border-line pt-5">
-                <p className="font-mono text-sm text-signal">0{i + 1}</p>
+                <p className="font-mono text-sm text-signal-ink">0{i + 1}</p>
                 <h3 className="mt-3 font-display text-2xl font-semibold tracking-[-0.02em]">{title}</h3>
                 <p className="mt-2 leading-relaxed text-muted">{body}</p>
               </li>
@@ -77,7 +77,7 @@ export default function ServicesPage() {
             <ul className="mt-5 grid gap-4 sm:grid-cols-2">
               {PRINCIPLES.map((p) => (
                 <li key={p} className="flex gap-3 leading-relaxed text-muted">
-                  <Check className="mt-1 size-4 shrink-0 text-signal" aria-hidden />
+                  <Check className="mt-1 size-4 shrink-0 text-signal-ink" aria-hidden />
                   {p}
                 </li>
               ))}

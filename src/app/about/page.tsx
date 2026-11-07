@@ -38,7 +38,7 @@ export default function AboutPage() {
         <div className="grid gap-4 md:grid-cols-3">
           {beliefs.map(([title, body], i) => (
             <div key={title} className="rounded-xl border border-line bg-surface p-6">
-              <p className="font-mono text-sm text-signal">0{i + 1}</p>
+              <p className="font-mono text-sm text-signal-ink">0{i + 1}</p>
               <h2 className="mt-6 font-display text-2xl font-semibold tracking-[-0.02em]">{title}</h2>
               <p className="mt-3 leading-relaxed text-muted">{body}</p>
             </div>
@@ -60,7 +60,7 @@ export default function AboutPage() {
           <ul className="space-y-4">
             {PRINCIPLES.map((p) => (
               <li key={p} className="flex gap-4 rounded-xl border border-line bg-bg p-5 leading-relaxed">
-                <Check className="mt-1 size-4 shrink-0 text-signal" aria-hidden />
+                <Check className="mt-1 size-4 shrink-0 text-signal-ink" aria-hidden />
                 {p}
               </li>
             ))}

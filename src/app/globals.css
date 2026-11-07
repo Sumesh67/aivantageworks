@@ -2,25 +2,48 @@
 
 /* Tokens: see DESIGN.md */
 @theme {
-  --color-bg: #0a0b0d;
-  --color-surface: #111317;
-  --color-raised: #181b20;
-  --color-line: #24282f;
-  --color-text: #f2f3f5;
-  --color-muted: #9aa1ac;
-  --color-faint: #6b727d;
-  --color-signal: #c6f432;
-  --color-signal-dim: #c6f4321a;
+  /* Light (default) */
+  --color-bg: #ffffff;
+  --color-surface: #f5f6f7;
+  --color-raised: #eceef1;
+  --color-line: #e2e5e9;
+  --color-text: #0e1013;
+  --color-muted: #4b5260;
+  --color-faint: #6b7280;
+  --color-signal: #c6f432; /* lime fill: buttons, dots */
+  --color-signal-hover: #b3e01c;
+  --color-signal-dim: #c6f43233;
+  --color-signal-ink: #4d7c0f; /* lime as text on light: 5.6:1 */
+  --color-on-signal: #0a0b0d;
   --color-amber: #f5b544;
+  --color-amber-ink: #b45309;
+  --color-grid: rgb(14 16 19 / 0.05);
 
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --font-display: var(--font-schibsted), var(--font-geist), ui-sans-serif, sans-serif;
 }
 
+/* Dark sections (header, heroes, closing CTA) */
+.theme-dark {
+  --color-bg: #0a0b0d;
+  --color-surface: #111317;
+  --color-raised: #181b20;
+  --color-line: #24282f;
+  --color-text: #f2f3f5;
+  --color-muted: #9aa1ac;
+  --color-faint: #7d8590;
+  --color-signal-dim: #c6f4321a;
+  --color-signal-ink: #c6f432;
+  --color-amber-ink: #f5b544;
+  --color-grid: rgb(255 255 255 / 0.04);
+  color: var(--color-text);
+  color-scheme: dark;
+}
+
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -32,14 +55,14 @@ body {
 
 ::selection {
   background: var(--color-signal);
-  color: var(--color-bg);
+  color: var(--color-on-signal);
 }
 
 /* Faint grid behind heroes */
 .grid-texture {
   background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+    linear-gradient(to right, var(--color-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-grid) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 40%, transparent 100%);
 }

@@ -61,7 +61,7 @@ export function AgentLog() {
             <span className="size-2.5 rounded-full bg-line" />
           </div>
           <span className="font-mono text-xs text-faint">enquiry-to-booking.agent</span>
-          <span className="flex items-center gap-1.5 font-mono text-xs text-signal">
+          <span className="flex items-center gap-1.5 font-mono text-xs text-signal-ink">
             <span className="size-1.5 rounded-full bg-signal" aria-hidden />
             live
           </span>
@@ -82,22 +82,22 @@ export function AgentLog() {
               >
                 <span
                   className={`w-[4.5rem] shrink-0 text-[11px] tracking-wider ${
-                    l.who === "you" ? "text-amber" : l.who === "done" ? "text-signal" : "text-faint"
+                    l.who === "you" ? "text-amber-ink" : l.who === "done" ? "text-signal-ink" : "text-faint"
                   }`}
                 >
                   {label[l.who]}
                 </span>
                 <span className={`flex-1 ${done ? "text-text" : "text-muted"}`}>
                   {approved ? "Approved by you ✓" : l.text}
-                  {active && !waiting && <span className="cursor-blink ml-0.5 text-signal">▍</span>}
+                  {active && !waiting && <span className="cursor-blink ml-0.5 text-signal-ink">▍</span>}
                 </span>
                 {waiting && (
-                  <span className="hidden shrink-0 rounded border border-amber/40 px-2 py-0.5 text-[11px] text-amber sm:inline">
+                  <span className="hidden shrink-0 rounded border border-amber/40 px-2 py-0.5 text-[11px] text-amber-ink sm:inline">
                     waiting for you
                   </span>
                 )}
                 {done && !approved && l.who !== "trigger" && (
-                  <span className="shrink-0 text-signal" aria-hidden>
+                  <span className="shrink-0 text-signal-ink" aria-hidden>
                     ✓
                   </span>
                 )}

@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden border-b border-line">
+      <section className="theme-dark relative overflow-hidden border-b border-line bg-bg">
         <div className="grid-texture absolute inset-0" aria-hidden />
         <Container className="relative grid items-center gap-14 pt-16 pb-20 lg:grid-cols-[1.15fr_1fr] lg:pt-28 lg:pb-28">
           <div>
@@ -24,7 +24,7 @@ export default function Home() {
             <h1 className="mt-6 font-display text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.98] font-bold tracking-[-0.04em]">
               AI that does the work.
               <br />
-              <span className="text-signal">You approve what matters.</span>
+              <span className="text-signal-ink">You approve what matters.</span>
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted">
               We find the repetitive work slowing your team down, then build the automations,
@@ -50,7 +50,7 @@ export default function Home() {
               <Eyebrow>What we do</Eyebrow>
               <H2>From &ldquo;we should use AI&rdquo; to a workflow your team uses every day.</H2>
             </div>
-            <Link href="/services" className="inline-flex items-center gap-1 text-sm font-medium text-signal hover:underline">
+            <Link href="/services" className="inline-flex items-center gap-1 text-sm font-medium text-signal-ink hover:underline">
               All services <ArrowRight className="size-4" aria-hidden />
             </Link>
           </div>
@@ -67,7 +67,7 @@ export default function Home() {
                 <h3 className="mt-8 font-display text-xl font-semibold tracking-[-0.02em]">{s.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{s.summary}</p>
                 <ArrowRight
-                  className="mt-6 size-4 text-faint transition-all group-hover:translate-x-1 group-hover:text-signal"
+                  className="mt-6 size-4 text-faint transition-all group-hover:translate-x-1 group-hover:text-signal-ink"
                   aria-hidden
                 />
               </Link>
@@ -94,7 +94,7 @@ export default function Home() {
                 className="grid gap-1 py-4 sm:grid-cols-[1fr_auto_1.4fr] sm:items-center sm:gap-5"
               >
                 <span className="font-medium">{before}</span>
-                <span className="hidden font-mono text-xs text-signal sm:block" aria-hidden>
+                <span className="hidden font-mono text-xs text-signal-ink sm:block" aria-hidden>
                   ──→
                 </span>
                 <span className="text-muted">{after}</span>
@@ -114,7 +114,7 @@ export default function Home() {
           <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {STEPS.map(([title, body], i) => (
               <li key={title} className="border-t border-line pt-5">
-                <p className="font-mono text-sm text-signal">0{i + 1}</p>
+                <p className="font-mono text-sm text-signal-ink">0{i + 1}</p>
                 <h3 className="mt-3 font-display text-2xl font-semibold tracking-[-0.02em]">{title}</h3>
                 <p className="mt-2 leading-relaxed text-muted">{body}</p>
               </li>
@@ -131,7 +131,7 @@ export default function Home() {
               <Eyebrow>Built by AIVantageWorks</Eyebrow>
               <H2>We don&apos;t just advise on AI. We ship it.</H2>
             </div>
-            <Link href="/products" className="inline-flex items-center gap-1 text-sm font-medium text-signal hover:underline">
+            <Link href="/products" className="inline-flex items-center gap-1 text-sm font-medium text-signal-ink hover:underline">
               All products <ArrowRight className="size-4" aria-hidden />
             </Link>
           </div>
