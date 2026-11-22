@@ -36,7 +36,7 @@ backgrounds — use `signal-ink`. Amber only means "a person decides here".
 - Body / UI: **Geist** 400–500, 16–18px, line-height 1.6
 - Mono (labels, logs, step numbers, status): **Geist Mono**, 12–13px, uppercase labels +0.08em
 
-Scale: h1 `clamp(2.75rem, 7vw, 5.5rem)` line-height 0.98; page h1 `clamp(2.5rem, 5vw, 4rem)`;
+Scale: h1 `clamp(2.75rem, 6vw, 4.75rem)` line-height 0.98; page h1 `clamp(2.5rem, 5vw, 4rem)`;
 h2 `clamp(2rem, 4vw, 3rem)`; h3 1.25–1.5rem.
 
 ## Layout & spacing
@@ -49,7 +49,13 @@ h2 `clamp(2rem, 4vw, 3rem)`; h3 1.25–1.5rem.
 
 ## Components
 - **Agent log** (home hero): mono terminal panel that types out a workflow
-  (read → draft → *waiting for your approval* → sent). Static for reduced motion.
+  (read → draft → *waiting for your approval* → sent). Static for reduced motion. Desktop only;
+  on phones the hero goes straight to the service strip.
+- **Service strip** (home hero, below the buttons): all services as icon tiles linking to
+  `/#service-<slug>`, so every service is visible in the first screen.
+- **Service explorer** (home): numbered service list (tabs; pills on mobile) beside one
+  large surface panel: tag + who it's for, title, body, "You get" checklist, and a light
+  "Example run" log ending in the amber YOU step. Deep link: `/#service-<slug>`.
 - **Page header**: mono eyebrow, big grotesk h1, one-paragraph lead.
 - **Cards**: surface bg, line border, hover → raised + lighter border.
 - **Status pills**: Live (lime), Early access (amber), Service (outline).

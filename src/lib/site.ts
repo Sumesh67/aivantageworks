@@ -27,6 +27,10 @@ export type Service = {
   body: string;
   points: string[];
   deliverables: string[];
+  /** Who it's for, one line. */
+  forWho: string;
+  /** Illustrative run shown on the home page: the agent works, a person approves. */
+  example: [who: "trigger" | "agent" | "you" | "done", text: string][];
 };
 
 export const SERVICES: Service[] = [
@@ -37,6 +41,14 @@ export const SERVICES: Service[] = [
     summary: "Find where AI saves real hours in your business.",
     body: "We sit with you and your team, map how work actually moves, and find the tasks where AI saves real hours. You get a short, plain-English plan ranked by effort and payback — useful even if you never hire us to build it.",
     points: ["Process mapping", "Tool & data check", "Prioritised roadmap"],
+    forWho: "Teams who know AI could help, but not where to start.",
+    example: [
+      ["trigger", "Working session with your team"],
+      ["agent", "Mapped weekly workflows and where time goes"],
+      ["agent", "Ranked opportunities by effort and payback"],
+      ["you", "Pick the first workflow to build?"],
+      ["done", "Plan delivered · first build scoped"],
+    ],
     deliverables: [
       "A map of your key workflows and where time goes",
       "A ranked list of automation opportunities",
@@ -50,6 +62,14 @@ export const SERVICES: Service[] = [
     summary: "Connect your tools and let AI handle the in-between work.",
     body: "We connect the tools you already use — email, forms, spreadsheets, CRM, calendar — and add AI where it helps: sorting, drafting, extracting, summarising. Your team keeps working the way they do; the busywork just disappears.",
     points: ["Lead intake & follow-up", "Inbox triage", "Docs → data"],
+    forWho: "Businesses buried in email, forms and copy-paste.",
+    example: [
+      ["trigger", "Supplier invoice arrives as a PDF"],
+      ["agent", "Pulled supplier, amount and due date"],
+      ["agent", "Matched it to the purchase order"],
+      ["you", "Approve entry to accounts?"],
+      ["done", "Logged · payment reminder set"],
+    ],
     deliverables: [
       "Working automations on your own accounts",
       "Approval steps wherever a customer or money is involved",
@@ -63,6 +83,14 @@ export const SERVICES: Service[] = [
     summary: "Focused AI tools built around how your business works.",
     body: "When off-the-shelf doesn't fit, we build small, focused AI tools and agents for your business — internal assistants, customer-facing helpers, approval flows — with a human check wherever the stakes are real.",
     points: ["Internal assistants", "Customer-facing helpers", "Approval flows"],
+    forWho: "Work that off-the-shelf tools don't fit.",
+    example: [
+      ["trigger", "Customer asks about the returns policy"],
+      ["agent", "Checked your policy and their order"],
+      ["agent", "Drafted a reply with the order details"],
+      ["you", "Send this reply?"],
+      ["done", "Sent · conversation logged"],
+    ],
     deliverables: [
       "A custom agent or tool, deployed and tested on real work",
       "Guardrails: what it can and can't do, written down",
@@ -76,10 +104,39 @@ export const SERVICES: Service[] = [
     summary: "See what ChatGPT and other assistants say about you.",
     body: "Customers now ask ChatGPT and other AI assistants who to call. We check what those answers say about your business, document the evidence side by side, and fix what's wrong or missing. No ranking promises — just a clear record and a fix list.",
     points: ["Evidence-based report", "Fix list", "No ranking promises"],
+    forWho: "Local businesses that customers find by asking AI.",
+    example: [
+      ["trigger", "Question customers ask: \"mechanic open Sunday near me\""],
+      ["agent", "Recorded the AI answers side by side"],
+      ["agent", "Checked them against your published facts"],
+      ["you", "Review the fix list?"],
+      ["done", "Fixes prioritised · evidence saved"],
+    ],
     deliverables: [
       "Recorded AI answers for questions your customers actually ask",
       "Your business facts checked against what's published online",
       "A prioritised fix list",
+    ],
+  },
+  {
+    slug: "website-security",
+    tag: "Protect",
+    title: "Website security & uptime check",
+    summary: "Find the gaps that lead to hacks and outages, with fixes for your platform.",
+    body: "Our scanner looks at your site from the outside, the way an attacker would: HTTPS and certificates, security headers, email spoofing protection, exposed files, outdated software, and whether a CDN shields you from traffic spikes. It only reads public information and changes nothing. We turn the results into a plain-English fix list written for your platform, and can make the fixes with you. No \"unhackable\" promises — just a clear picture and a fix list.",
+    points: ["Passive outside-in scan", "Platform-specific fixes", "No \"unhackable\" promises"],
+    forWho: "Any business whose website takes leads, bookings or payments.",
+    example: [
+      ["trigger", "Scan requested for yoursite.com"],
+      ["agent", "Checked HTTPS, headers, email and exposed files"],
+      ["agent", "Wrote fixes for your platform"],
+      ["you", "Apply the header fixes?"],
+      ["done", "Applied · re-scanned to confirm"],
+    ],
+    deliverables: [
+      "A graded report covering HTTPS, headers, email, exposed files and outdated software",
+      "Copy-paste fixes for your platform — Vercel, WordPress, Cloudflare and more",
+      "Optional: we apply the fixes with you, then re-scan to confirm",
     ],
   },
 ];
@@ -125,6 +182,14 @@ export const PRODUCTS: Product[] = [
     body: "Our in-house audit tool for local businesses: records what AI assistants say about a business, side by side with the evidence, and turns it into a clear fix list.",
     href: "/services#ai-search-visibility",
     cta: "About the audit",
+  },
+  {
+    name: "Site Shield",
+    status: "Early access",
+    kind: "Website security",
+    body: "Our website security scanner: checks HTTPS, security headers, email spoofing protection, exposed files and outdated software, then gives a grade and copy-paste fixes for your platform.",
+    href: "/services#website-security",
+    cta: "About the check",
   },
   {
     name: "Trip Agent",

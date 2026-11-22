@@ -6,7 +6,7 @@ import { PRINCIPLES, SERVICES, STEPS } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "AI workflow reviews, automations and integrations, custom AI agents, and AI search visibility audits for businesses.",
+    "AI workflow reviews, automations and integrations, custom AI agents, AI search visibility audits, and website security checks for businesses.",
   alternates: { canonical: "/services" },
 };
 
@@ -16,7 +16,7 @@ export default function ServicesPage() {
       <PageHeader
         eyebrow="Services"
         title="We find the busywork. Then we build the AI that does it."
-        lead="Four ways we help — from a one-off review to custom agents. Most clients start with the review, pick one workflow, and grow from there."
+        lead="Five ways we help — from a one-off review to custom agents and website security checks. Most clients start with the review, pick one workflow, and grow from there."
       />
 
       <Container className="py-8 lg:py-12">
