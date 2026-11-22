@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Check } from "lucide-react";
 import { Container, CtaBand, Eyebrow, H2, PageHeader } from "@/components/ui";
+import { ProofNote } from "@/components/ProofNote";
 import { PRINCIPLES, SERVICES, STEPS } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -41,6 +42,7 @@ export default function ServicesPage() {
                   </li>
                 ))}
               </ul>
+              {s.proof && <ProofNote proof={s.proof} />}
             </div>
             <div className="rounded-xl border border-line bg-surface p-5">
               <p className="font-mono text-xs uppercase tracking-[0.08em] text-faint">You get</p>

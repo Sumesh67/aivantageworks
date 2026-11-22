@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Check } from "lucide-react";
 import { CONTACT_EMAIL, type Service } from "@/lib/site";
+import { ProofNote } from "./ProofNote";
 
 const focus = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal-ink";
 
@@ -126,6 +127,7 @@ export function ServiceExplorer({ services }: { services: Service[] }) {
             {s.title}
           </h3>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">{s.body}</p>
+          {s.proof && <ProofNote proof={s.proof} />}
 
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             <div>

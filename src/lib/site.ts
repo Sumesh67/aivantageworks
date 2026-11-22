@@ -29,6 +29,8 @@ export type Service = {
   deliverables: string[];
   /** Who it's for, one line. */
   forWho: string;
+  /** A real, dated result we measured ourselves (never a client claim). */
+  proof?: { text: string; date: string; href: string; cta: string };
   /** Illustrative run shown on the home page: the agent works, a person approves. */
   example: [who: "trigger" | "agent" | "you" | "done", text: string][];
 };
@@ -126,6 +128,12 @@ export const SERVICES: Service[] = [
     body: "Our scanner looks at your site from the outside, the way an attacker would: HTTPS and certificates, security headers, email spoofing protection, exposed files, outdated software, and whether a CDN shields you from traffic spikes. It only reads public information and changes nothing. We turn the results into a plain-English fix list written for your platform, and can make the fixes with you. No \"unhackable\" promises — just a clear picture and a fix list.",
     points: ["Passive outside-in scan", "Platform-specific fixes", "No \"unhackable\" promises"],
     forWho: "Any business whose website takes leads, bookings or payments.",
+    proof: {
+      text: "We ran it on our own site first: www.aivantageworks.com went from C (76/100) to A (98/100) after the fixes.",
+      date: "Scanned 23 Nov 2026",
+      href: "https://shield.aivantageworks.com/",
+      cta: "Scan your site free",
+    },
     example: [
       ["trigger", "Scan requested for yoursite.com"],
       ["agent", "Checked HTTPS, headers, email and exposed files"],
