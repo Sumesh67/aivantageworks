@@ -188,8 +188,8 @@ export const PRODUCTS: Product[] = [
     status: "Early access",
     kind: "Website security",
     body: "Our website security scanner: checks HTTPS, security headers, email spoofing protection, exposed files and outdated software, then gives a grade and copy-paste fixes for your platform.",
-    href: "/services#website-security",
-    cta: "About the check",
+    href: "https://shield.aivantageworks.com/",
+    cta: "Run a free scan",
   },
   {
     name: "Trip Agent",
