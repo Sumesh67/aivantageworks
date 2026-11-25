@@ -1,94 +1,92 @@
 import type { Metadata } from "next";
-import { Check } from "lucide-react";
-import { Container, CtaBand, Eyebrow, H2, PageHeader } from "@/components/ui";
-import { ProofNote } from "@/components/ProofNote";
-import { PRINCIPLES, SERVICES, STEPS } from "@/lib/site";
+import { ClosingBand, PageHero, Sq } from "@/components/ui";
+import { CONTACT_EMAIL, PRINCIPLES, SERVICES, STEPS } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "AI workflow reviews, automations and integrations, custom AI agents, AI search visibility audits, and website security checks for businesses.",
+    "AI workflow reviews, automations, custom AI tools, AI search visibility, and website security for small businesses.",
   alternates: { canonical: "/services" },
 };
+
+const ask = (title: string) =>
+  `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`Question about: ${title}`)}&body=${encodeURIComponent(
+    "Hi,\n\nOur business: \nWhat we'd like help with: \n",
+  )}`;
 
 export default function ServicesPage() {
   return (
     <>
-      <PageHeader
-        eyebrow="Services"
-        title="We find the busywork. Then we build the AI that does it."
-        lead="Five ways we help — from a one-off review to custom agents and website security checks. Most clients start with the review, pick one workflow, and grow from there."
+      <PageHero
+        title={
+          <>
+            Five ways we help
+            <Sq />
+          </>
+        }
+        lead="Start with whichever fits. Most clients begin with the review and pick one thing to build from it."
       />
 
-      <Container className="py-8 lg:py-12">
-        {SERVICES.map((s, i) => (
-          <section
-            key={s.slug}
-            id={s.slug}
-            className="grid scroll-mt-28 gap-8 border-b border-line py-14 last:border-b-0 lg:grid-cols-[0.8fr_1.2fr_1fr] lg:gap-12"
-          >
-            <div>
-              <p className="font-mono text-xs text-faint">
-                0{i + 1} / {s.tag}
-              </p>
-              <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.03em]">{s.title}</h2>
-            </div>
-            <div>
-              <p className="text-lg leading-relaxed text-muted">{s.body}</p>
-              <ul className="mt-6 flex flex-wrap gap-2">
-                {s.points.map((p) => (
-                  <li key={p} className="rounded-md border border-line px-2.5 py-1 font-mono text-xs text-muted">
-                    {p}
-                  </li>
-                ))}
-              </ul>
-              {s.proof && <ProofNote proof={s.proof} />}
-            </div>
-            <div className="rounded-xl border border-line bg-surface p-5">
-              <p className="font-mono text-xs uppercase tracking-[0.08em] text-faint">You get</p>
-              <ul className="mt-4 space-y-3">
-                {s.deliverables.map((d) => (
-                  <li key={d} className="flex gap-3 text-sm leading-relaxed">
-                    <Check className="mt-0.5 size-4 shrink-0 text-signal-ink" aria-hidden />
-                    {d}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-        ))}
-      </Container>
+      <section className="block" style={{ paddingTop: 72 }}>
+        <div className="wrap">
+          {SERVICES.map((s) => (
+            <article className="entry" id={s.slug} key={s.slug}>
+              <div>
+                <h2>{s.title}</h2>
+                <p className="who">{s.forWho}</p>
+              </div>
+              <div>
+                <p className="body">{s.body}</p>
+                <h3>What you get</h3>
+                <ul className="marks">
+                  {s.deliverables.map((d) => (
+                    <li key={d}>{d}</li>
+                  ))}
+                </ul>
+                {s.proof && (
+                  <p className="note">
+                    <b>Our own result:</b> {s.proof.text} {s.proof.date}.
+                  </p>
+                )}
+                <div className="actions">
+                  <a className="textlink" href={ask(s.title)}>
+                    Ask about this →
+                  </a>
+                  {s.proof && (
+                    <a className="textlink" href={s.proof.href} target="_blank" rel="noopener noreferrer">
+                      {s.proof.cta} →
+                    </a>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
 
-      <section className="border-t border-line bg-surface">
-        <Container className="py-20 lg:py-28">
-          <div className="max-w-2xl">
-            <Eyebrow>How an engagement runs</Eyebrow>
-            <H2>Start small. Prove it. Then grow.</H2>
+      <section className="block paper">
+        <div className="wrap">
+          <div className="head">
+            <h2>How working with us goes</h2>
+            <p>Small steps, so you see results before you commit to more.</p>
           </div>
-          <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {STEPS.map(([title, body], i) => (
-              <li key={title} className="border-t border-line pt-5">
-                <p className="font-mono text-sm text-signal-ink">0{i + 1}</p>
-                <h3 className="mt-3 font-display text-2xl font-semibold tracking-[-0.02em]">{title}</h3>
-                <p className="mt-2 leading-relaxed text-muted">{body}</p>
+          <ol className="steps">
+            {STEPS.map(([title, body]) => (
+              <li key={title}>
+                <b>{title}</b>
+                <span>{body}</span>
               </li>
             ))}
           </ol>
-          <div className="mt-16 rounded-xl border border-line bg-bg p-7 sm:p-8">
-            <h3 className="font-display text-xl font-semibold">Ground rules we build by</h3>
-            <ul className="mt-5 grid gap-4 sm:grid-cols-2">
-              {PRINCIPLES.map((p) => (
-                <li key={p} className="flex gap-3 leading-relaxed text-muted">
-                  <Check className="mt-1 size-4 shrink-0 text-signal-ink" aria-hidden />
-                  {p}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Container>
+          <ul className="marks" style={{ marginTop: 56 }}>
+            {PRINCIPLES.map((p) => (
+              <li key={p}>{p}</li>
+            ))}
+          </ul>
+        </div>
       </section>
 
-      <CtaBand />
+      <ClosingBand />
     </>
   );
 }

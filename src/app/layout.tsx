@@ -1,19 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Schibsted_Grotesk } from "next/font/google";
+import { Schibsted_Grotesk, Source_Sans_3 } from "next/font/google";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
-const sans = Geist({ subsets: ["latin"], variable: "--font-geist" });
-const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
-const display = Schibsted_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-schibsted",
-  weight: ["600", "700"],
-});
+const display = Schibsted_Grotesk({ subsets: ["latin"], variable: "--font-display", weight: ["500", "600", "700"] });
+const body = Source_Sans_3({ subsets: ["latin"], variable: "--font-body", weight: ["400", "600"] });
 
-const title = "AIVantageWorks — AI automation & workflows for businesses";
+const title = "AIVantageWorks — practical AI for small businesses";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -42,12 +37,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${sans.variable} ${mono.variable} ${display.variable}`}
+      className={`${display.variable} ${body.variable}`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-screen flex-col" suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <SiteHeader />
-        <main className="flex-1">{children}</main>
+        <main>{children}</main>
         <SiteFooter />
       </body>
     </html>

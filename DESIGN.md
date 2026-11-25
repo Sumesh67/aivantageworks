@@ -1,74 +1,63 @@
 # AIVantageWorks — Design System
 
-**Direction: "Control room."** An AI engineering studio. Precise, quietly alive, with dark "control room" bookends around bright, readable pages:
-agents visibly working, a human visibly in control. Feels like the tools engineers trust
-(terminal, logs, status lights), explained in plain language for business owners.
+**Direction: "A confident page from a small studio."** Big, honest sentences on one deep
+colour, set in one strong typeface, with room to breathe. The writing is the design.
+Replaced the earlier "control room" direction on 2026-11-25 (owner: it felt robotic).
+Method: gstack design-consultation (research → one thing → proposal → preview → review).
+Preview of record: `docs/design-preview.html`.
 
-**The one thing to remember:** *AI does the work; you approve what matters.*
-Every page shows that loop somewhere (agent log, approval step, ground rules).
+## The one thing
+**Real people, practical help.** Every page should read like a small team talking to a
+business owner, not a machine or an agency deck.
 
-Avoid: purple/blue gradients, glowing orbs, sparkle emoji, stock robots, fake dashboards
-with invented numbers, client logos or testimonials we don't have.
+## Research (2026-11-25)
+thoughtbot, 37signals, Linear, IDEO. Without photos (owner's choice), the professional
+sites that work (37signals, Linear) win on conviction: large confident type, one colour,
+space, no decoration. Our departures: (1) no hero image, the sentence is the hero;
+(2) services and products as editorial indexes, not cards.
 
-## Color — light pages, dark bookends
-Pages are light. The header, each page's hero, and the closing CTA band use the
-`.theme-dark` class, which re-scopes the same tokens to dark values (globals.css).
+## Colour (light pages, navy bookends)
+| Token | Value | Use |
+|---|---|---|
+| navy | `#0e1a33` | header, home poster, page title bands, score card, closing band |
+| navy-soft / navy-dim | `#9aa8c2` / `#7f8ca6` | text on navy (7.2:1 / 5.1:1) |
+| white / paper | `#ffffff` / `#f7f7f5` | page / alternating sections |
+| ink | `#0e1a33` | text, strong rules |
+| muted / soft | `#4f5a6e` / `#6b7486` | secondary text (6.5:1) / labels (4.7:1) |
+| line | `#e3e4e6` | hairlines |
+| signal | `#ff6a3d` | **fill or mark only**: main button, the square, bullets, status dots |
+| signal-ink | `#c2410c` | orange as text on light: links, hover (5.2:1) |
+No green, no lime, no gradients, no pastel blocks. All pairs checked ≥ 4.5:1.
 
-| Token | Light | Dark (`.theme-dark`) | Use |
-|---|---|---|---|
-| bg | `#ffffff` | `#0a0b0d` | background |
-| surface | `#f5f6f7` | `#111317` | cards, alternating sections |
-| raised | `#eceef1` | `#181b20` | hover |
-| line | `#e2e5e9` | `#24282f` | borders |
-| text | `#0e1013` | `#f2f3f5` | primary text |
-| muted | `#4b5260` | `#9aa1ac` | secondary text |
-| faint | `#6b7280` | `#7d8590` | labels, captions |
-| signal | `#c6f432` | same | lime fill: primary buttons, dots |
-| signal-ink | `#4d7c0f` | `#c6f432` | lime used as text/icons (readable on each) |
-| on-signal | `#0a0b0d` | same | text on lime buttons |
-| amber-ink | `#b45309` | `#f5b544` | "waiting for you" / human-approval state |
+## Type
+- **Schibsted Grotesk** 500–700: headlines, tight tracking (-0.03 to -0.04em). Shared with Site Shield.
+- **Source Sans 3** 400/600: body, 18px / 1.6.
+- No monospace labels, no uppercase kickers, no "01 /" numbering.
+Scale: poster h1 `clamp(3rem, 7vw, 5.6rem)`; page h1 `clamp(2.5rem, 5.4vw, 4.4rem)`;
+section h2 `clamp(2.1rem, 4vw, 3.2rem)`; statement `clamp(1.8rem, 3.4vw, 2.9rem)`, two-tone.
 
-Rules: one lime button per view. Never put `signal` (bright lime) as text on light
-backgrounds — use `signal-ink`. Amber only means "a person decides here".
+## Signature
+The logo's **orange square** ends key headlines in place of a full stop (screen readers
+get a real full stop), and marks list items and statuses. Use it sparingly: one per heading.
 
-## Typography
-- Display / headings: **Schibsted Grotesk** 600–700, tracking -0.03em
-- Body / UI: **Geist** 400–500, 16–18px, line-height 1.6
-- Mono (labels, logs, step numbers, status): **Geist Mono**, 12–13px, uppercase labels +0.08em
+## Layout
+- Max width 1180px; gutters 20px mobile / 40px desktop; sections 112px (80px mobile).
+- Rhythm: navy poster → white index → white case study → paper statement → white table → navy close.
+- Shapes: buttons 6px radius, score card 8px. **No cards, no rounded bands, no shadows.**
+  Structure comes from hairlines (strong ink rule at the top of each list).
+- One primary (orange) action per view; secondary actions are underlined text links.
 
-Scale: h1 `clamp(2.75rem, 6vw, 4.75rem)` line-height 0.98; page h1 `clamp(2.5rem, 5vw, 4rem)`;
-h2 `clamp(2rem, 4vw, 3rem)`; h3 1.25–1.5rem.
-
-## Layout & spacing
-- Max width 1200px; gutters 20px mobile / 24px desktop
-- Sections 96px desktop / 64px mobile, separated by 1px `line` borders
-- Radius: controls 8px, cards 12px
-- Faint 64px grid texture behind heroes only (≤4% opacity), masked to fade out
-- No drop shadows; depth comes from surface steps and borders. One lime glow allowed
-  behind the hero agent log.
-
-## Components
-- **Agent log** (home hero): mono terminal panel that types out a workflow
-  (read → draft → *waiting for your approval* → sent). Static for reduced motion. Desktop only;
-  on phones the hero goes straight to the service strip.
-- **Service strip** (home hero, below the buttons): all services as icon tiles linking to
-  `/#service-<slug>`, so every service is visible in the first screen.
-- **Service explorer** (home): numbered service list (tabs; pills on mobile) beside one
-  large surface panel: tag + who it's for, title, body, "You get" checklist, and a light
-  "Example run" log ending in the amber YOU step. Deep link: `/#service-<slug>`.
-- **Page header**: mono eyebrow, big grotesk h1, one-paragraph lead.
-- **Cards**: surface bg, line border, hover → raised + lighter border.
-- **Status pills**: Live (lime), Early access (amber), Service (outline).
-- **CTA band**: closes every page — "Tell us the one task your team dreads."
-- **Buttons**: primary = lime fill, black text; secondary = line outline, text color.
-
-## Pages
-`/` overview · `/services` · `/products` · `/about` · `/contact`. Shared header + footer.
-No personal names on the site; the studio speaks as "we".
+## Components (src/components/ui.tsx, globals.css)
+Poster · PageHero (navy title band) · services index · case study with score card ·
+two-tone statement + beliefs · products table · `.entry` long-form rows · `.marks` lists ·
+ClosingBand · four-column footer.
 
 ## Voice
-Plain, specific, no hype. Never invent client results or metrics.
+Plain sentences from "we" to "you". No hype words, no fragments. Only real, dated proof
+(e.g. our own site C 76 → A 98, 23 Nov 2026). Never invent client results, durations or
+promises.
 
-## Motion
-Agent log typing + blinking cursor; 150ms hover transitions. All motion off under
-`prefers-reduced-motion`.
+## Never
+Terminal/agent-log visuals · monospace kickers · numbered labels · neon on black ·
+pastel colour blocks · pill buttons · speech-bubble decoration · card grids · icons in
+circles · gradients · stock imagery · invented testimonials or metrics.

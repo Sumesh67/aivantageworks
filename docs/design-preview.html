@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIVantageWorks — design preview (studio direction)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0e1a33;
+    --navy-soft: #9aa8c2;   /* 7.2:1 on navy */
+    --navy-dim: #7f8ca6;    /* 5.1:1 on navy */
+    --navy-line: rgba(255, 255, 255, 0.14);
+    --paper: #f7f7f5;
+    --white: #ffffff;
+    --ink: #0e1a33;
+    --muted: #4f5a6e;       /* 6.5:1 on paper */
+    --soft: #6b7486;        /* 4.7:1 on white */
+    --line: #e3e4e6;
+    --signal: #ff6a3d;      /* fill only: button, marks */
+    --signal-ink: #c2410c;  /* orange as text on light: 5.2:1 */
+    --display: "Schibsted Grotesk", sans-serif;
+    --body: "Source Sans 3", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--white); color: var(--ink); font: 400 18px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  p { margin: 0; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+  @media (min-width: 760px) { .wrap { padding: 0 40px; } }
+  h1, h2, h3 { font-family: var(--display); margin: 0; }
+
+  .note { background: #000; color: #bbb; font: 400 13px/1.4 var(--body); padding: 7px 0; }
+
+  /* Header sits on the navy poster */
+  header.top { position: absolute; left: 0; right: 0; z-index: 2; color: #fff; }
+  header.top .wrap { display: flex; align-items: center; gap: 32px; height: 84px; }
+  .logo { display: inline-flex; align-items: center; gap: 11px; font: 700 19px/1 var(--display); letter-spacing: -0.01em; color: #fff; text-decoration: none; }
+  .logo i { width: 22px; height: 22px; border: 2px solid #fff; border-radius: 4px; position: relative; }
+  .logo i::after { content: ""; position: absolute; right: -6px; bottom: -6px; width: 9px; height: 9px; border-radius: 2px; background: var(--signal); }
+  nav { margin-left: auto; display: flex; gap: 32px; align-items: center; font-size: 16px; }
+  nav a { color: var(--navy-soft); text-decoration: none; }
+  nav a:hover { color: #fff; }
+  nav .talk { color: #fff; border: 1px solid rgba(255, 255, 255, 0.4); padding: 9px 16px; border-radius: 6px; }
+  @media (max-width: 800px) { nav a:not(.talk) { display: none; } }
+
+  /* Poster */
+  .poster { background: var(--navy); color: #fff; min-height: clamp(640px, 90vh, 900px); display: flex; flex-direction: column; justify-content: flex-end; padding: 150px 0 0; }
+  .poster .wrap { width: 100%; }
+  @media (max-width: 759px) { .poster { min-height: 0; padding-top: 128px; } .proof { margin-top: 64px; } }
+  .poster h1 { font-weight: 600; font-size: clamp(3rem, 7vw, 5.6rem); line-height: 0.98; letter-spacing: -0.04em; max-width: 15ch; }
+  .sq { display: inline-block; width: 0.17em; height: 0.17em; background: var(--signal); margin-left: 0.06em; vertical-align: 0.02em; }
+  .sr { position: absolute; left: -9999px; }
+  .poster .cont { font: 400 clamp(1.35rem, 2.3vw, 1.85rem)/1.35 var(--display); letter-spacing: -0.015em; color: var(--navy-dim); max-width: 30ch; margin-top: 28px; }
+  .poster .cont b { color: #fff; font-weight: 500; }
+  .cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 40px; font: 600 17px var(--body); background: var(--signal); color: var(--navy); padding: 15px 24px; border-radius: 6px; text-decoration: none; }
+  .cta:hover { filter: brightness(1.06); }
+  .proof { margin-top: 96px; border-top: 1px solid var(--navy-line); padding: 22px 0 26px; display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 16px; color: var(--navy-dim); }
+  .proof span { color: var(--navy-soft); }
+  .proof a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.25); }
+
+  /* Sections */
+  section.block { padding: 112px 0; }
+  .head { display: grid; gap: 14px; margin-bottom: 48px; }
+  @media (min-width: 900px) { .head { grid-template-columns: 1fr 1fr; align-items: end; gap: 64px; } }
+  .head h2 { font-weight: 600; font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1.02; letter-spacing: -0.035em; }
+  .head p { color: var(--muted); font-size: 19px; max-width: 30em; }
+
+  /* Services index */
+  .index { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+  .index li { border-bottom: 1px solid var(--line); }
+  .index a { display: grid; gap: 6px 48px; padding: 30px 0; text-decoration: none; }
+  @media (min-width: 900px) { .index a { grid-template-columns: 1fr 1fr 24px; align-items: baseline; } }
+  .index h3 { font-weight: 600; font-size: clamp(1.6rem, 2.6vw, 2.15rem); line-height: 1.08; letter-spacing: -0.025em; }
+  .index p { color: var(--muted); }
+  .index .go { color: var(--soft); font: 400 22px var(--body); transition: transform 0.15s, color 0.15s; }
+  @media (max-width: 899px) { .index .go { display: none; } .index a { padding: 24px 0; } }
+  .index a:hover h3 { color: var(--signal-ink); }
+  .index a:hover .go { transform: translateX(4px); color: var(--signal-ink); }
+
+  /* Statement */
+  .statement { background: var(--paper); }
+  .big { font: 500 clamp(1.8rem, 3.4vw, 2.9rem)/1.18 var(--display); letter-spacing: -0.03em; max-width: 24ch; }
+  .big span { color: var(--soft); }
+  .rules { list-style: none; margin: 64px 0 0; padding: 0; display: grid; gap: 0 64px; }
+  @media (min-width: 900px) { .rules { grid-template-columns: 1fr 1fr; } }
+  .rules li { display: grid; grid-template-columns: 18px 1fr; gap: 14px; padding: 20px 0; border-top: 1px solid var(--line); font-size: 19px; }
+  .rules li::before { content: ""; width: 8px; height: 8px; background: var(--signal); margin-top: 11px; }
+
+  /* Products table */
+  .products { width: 100%; border-collapse: collapse; }
+  .products th { text-align: left; font: 600 14px var(--body); color: var(--soft); padding: 0 0 14px; border-bottom: 1px solid var(--ink); }
+  .products td { padding: 22px 24px 22px 0; border-bottom: 1px solid var(--line); vertical-align: baseline; }
+  .products td:first-child { font: 600 1.35rem/1.2 var(--display); letter-spacing: -0.02em; white-space: nowrap; }
+  .products td.desc { color: var(--muted); }
+  .products td.status { font-size: 15px; color: var(--muted); white-space: nowrap; }
+  .products td.status::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--signal); margin-right: 8px; vertical-align: 2px; }
+  .products td.link a { color: var(--signal-ink); font-weight: 600; text-decoration: none; white-space: nowrap; }
+  @media (max-width: 760px) {
+    .products thead { display: none; }
+    .products tr { display: grid; grid-template-columns: 1fr auto; padding: 18px 0; border-bottom: 1px solid var(--line); }
+    .products td { padding: 2px 0; border: 0; }
+    .products td.desc { grid-column: 1 / -1; }
+  }
+
+  /* Close */
+  .closing { background: var(--navy); color: #fff; padding: 112px 0; }
+  .closing h2 { font-weight: 600; font-size: clamp(2.3rem, 5vw, 4rem); line-height: 1; letter-spacing: -0.04em; max-width: 15ch; }
+  .closing p { color: var(--navy-soft); font-size: 20px; margin-top: 22px; max-width: 30em; }
+  footer { padding: 30px 0 44px; font-size: 15px; color: var(--muted); }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; }
+  footer a { color: var(--ink); }
+
+  /* Case study */
+  .case { background: var(--white); border-top: 1px solid var(--line); }
+  .casegrid { display: grid; gap: 56px; align-items: center; }
+  @media (min-width: 960px) { .casegrid { grid-template-columns: 1.05fr 0.95fr; gap: 88px; } }
+  .case h2 { font-weight: 600; font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1.02; letter-spacing: -0.035em; max-width: 13ch; }
+  .lede { color: var(--muted); font-size: 20px; margin-top: 22px; max-width: 30em; }
+  .changes { list-style: none; margin: 28px 0 0; padding: 0; border-top: 1px solid var(--line); }
+  .changes li { padding: 14px 0 14px 26px; border-bottom: 1px solid var(--line); position: relative; }
+  .changes li::before { content: ""; position: absolute; left: 0; top: 23px; width: 8px; height: 8px; background: var(--signal); }
+  .textlink { display: inline-block; margin-top: 26px; color: var(--signal-ink); font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
+  .scores { margin: 0; background: var(--navy); color: #fff; border-radius: 8px; padding: 44px 40px 32px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px; }
+  .score b { display: block; font: 700 clamp(4rem, 8vw, 6.5rem)/0.9 var(--display); letter-spacing: -0.05em; }
+  .score span { display: block; font-size: 16px; color: var(--navy-soft); margin-top: 10px; }
+  .score small { display: block; font-size: 14px; color: var(--navy-dim); margin-top: 2px; }
+  .before b { color: var(--navy-dim); }
+  .after b { color: #fff; }
+  .arrowline { height: 2px; background: var(--signal); position: relative; }
+  .arrowline::after { content: ""; position: absolute; right: -2px; top: -5px; border: 6px solid transparent; border-left: 9px solid var(--signal); border-right: 0; }
+  .scores figcaption { grid-column: 1 / -1; border-top: 1px solid var(--navy-line); padding-top: 18px; margin-top: 12px; font-size: 14.5px; color: var(--navy-dim); }
+
+  /* Beliefs */
+  .beliefs { list-style: none; margin: 64px 0 0; padding: 0; display: grid; gap: 0 64px; }
+  @media (min-width: 900px) { .beliefs { grid-template-columns: 1fr 1fr; } }
+  .beliefs li { padding: 24px 0; border-top: 1px solid var(--ink); }
+  .beliefs b { display: block; font: 600 1.35rem/1.2 var(--display); letter-spacing: -0.02em; }
+  .beliefs span { display: block; color: var(--muted); margin-top: 8px; max-width: 32em; }
+
+  /* Footer */
+  footer.site { background: var(--white); border-top: 1px solid var(--line); padding: 56px 0 40px; font-size: 16px; }
+  .fgrid { display: grid; gap: 36px; }
+  @media (min-width: 900px) { .fgrid { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
+  .fgrid h4 { margin: 0 0 12px; font: 600 14px var(--body); color: var(--soft); }
+  .fgrid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .fgrid a { color: var(--ink); text-decoration: none; }
+  .fgrid a:hover { color: var(--signal-ink); }
+  .fbrand p { color: var(--muted); margin-top: 14px; max-width: 24em; }
+  .fbrand .logo { color: var(--ink); }
+  .fbrand .logo i { border-color: var(--ink); }
+  .legal { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--soft); font-size: 14.5px; }
+  :focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
+</style>
+</head>
+<body>
+<div class="note"><div class="wrap">Design preview · studio direction · not the live site</div></div>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="#"><i aria-hidden="true"></i>AIVantageWorks</a>
+  <nav aria-label="Main"><a href="#services">Services</a><a href="#work">Our work</a><a href="#how">How we work</a><a class="talk" href="#contact">Book a free call</a></nav>
+</div></header>
+
+<main>
+  <section class="poster"><div class="wrap">
+    <h1>Practical AI for small businesses<span class="sq" aria-hidden="true"></span><span class="sr">.</span></h1>
+    <p class="cont">We're a small studio. <b>We find the work that eats your week</b> and set up AI to take it off your plate.</p>
+    <a class="cta" href="#contact">Book a free call <span aria-hidden="true">→</span></a>
+    <div class="proof"><span>Things we've built:</span>
+      <a href="#">Site Shield</a><a href="#">InviteBeam</a><a href="#">CreateAndColor</a><a href="#">Trip Agent</a><a href="#">Interesting Places and Facts</a>
+    </div>
+  </div></section>
+
+  <section class="block" id="services"><div class="wrap">
+    <div class="head"><h2>What we do</h2><p>Five ways to start. Most clients begin with the review and pick one thing to build from it.</p></div>
+    <ul class="index">
+      <li><a href="#"><h3>AI workflow review</h3><p>We sit with your team, see where the hours go, and give you a short plan ranked by payback.</p><span class="go" aria-hidden="true">→</span></a></li>
+      <li><a href="#"><h3>Automations</h3><p>We connect the tools you already use and let AI handle the in-between work.</p><span class="go" aria-hidden="true">→</span></a></li>
+      <li><a href="#"><h3>Custom AI tools</h3><p>When nothing off the shelf fits, a small tool built around how you work.</p><span class="go" aria-hidden="true">→</span></a></li>
+      <li><a href="#"><h3>AI search visibility</h3><p>What ChatGPT and other assistants tell people about you, checked and fixed.</p><span class="go" aria-hidden="true">→</span></a></li>
+      <li><a href="#"><h3>Website security</h3><p>The gaps that lead to hacks and outages, explained plainly and fixed with you.</p><span class="go" aria-hidden="true">→</span></a></li>
+    </ul>
+  </div></section>
+
+
+  <section class="block case"><div class="wrap">
+    <div class="casegrid">
+      <div>
+        <h2>Proof, starting with our own website<span class="sq" aria-hidden="true"></span></h2>
+        <p class="lede">Before offering website security checks, we ran one on ourselves. It scored a C: browsers weren't given basic protection rules, and fake emails could be sent in our name.</p>
+        <ul class="changes">
+          <li>Added the missing browser protections in one change</li>
+          <li>Turned on email spoofing protection</li>
+          <li>Published a private way to report security problems</li>
+        </ul>
+        <a class="textlink" href="#">Run the same check on your site →</a>
+      </div>
+      <figure class="scores" aria-label="Score went from C, 76 out of 100, to A, 98 out of 100">
+        <div class="score before"><b>C</b><span>76 / 100</span><small>Before</small></div>
+        <div class="arrowline" aria-hidden="true"></div>
+        <div class="score after"><b>A</b><span>98 / 100</span><small>After</small></div>
+        <figcaption>aivantageworks.com · checked with Site Shield · 23 Nov 2026</figcaption>
+      </figure>
+    </div>
+  </div></section>
+
+  <section class="block statement" id="how"><div class="wrap">
+    <p class="big">We start small<span class="sq" aria-hidden="true"></span> <span> One conversation, one task, and one fix you can see working, built on the tools you already use. Then we hand it over, and you own it.</span></p>
+    <ul class="beliefs">
+      <li><b>Builders, not slide-makers.</b><span>We run AI products of our own, so our advice comes from what has worked in practice.</span></li>
+      <li><b>Small and direct.</b><span>You work with the people who build your system, not an account manager.</span></li>
+      <li><b>Boring wins first.</b><span>The best first project is usually an unglamorous task that eats hours every week.</span></li>
+      <li><b>A person stays in charge.</b><span>AI shouldn't make promises to your customers on its own. Someone approves what matters.</span></li>
+    </ul>
+  </div></section>
+
+  <section class="block" id="work"><div class="wrap">
+    <div class="head"><h2>Our own products</h2><p>We build and run these ourselves, so we know what it takes to make AI useful day to day.</p></div>
+    <table class="products">
+      <thead><tr><th scope="col">Product</th><th scope="col">What it does</th><th scope="col">Status</th><th scope="col"><span class="sr" style="position:absolute;left:-9999px">Link</span></th></tr></thead>
+      <tbody>
+        <tr><td>Site Shield</td><td class="desc">A plain-English security check for any website.</td><td class="status">Live</td><td class="link"><a href="#">Run a check →</a></td></tr>
+        <tr><td>InviteBeam</td><td class="desc">Animated invitations with one-click RSVPs and a guest dashboard.</td><td class="status">Live</td><td class="link"><a href="#">Visit →</a></td></tr>
+        <tr><td>CreateAndColor</td><td class="desc">Turns a child's idea into a printable colouring page.</td><td class="status">Live</td><td class="link"><a href="#">Try it →</a></td></tr>
+        <tr><td>Trip Agent</td><td class="desc">Plans a trip from one sentence and books only after you approve.</td><td class="status">Early access</td><td class="link"><a href="#">Join →</a></td></tr>
+        <tr><td>Interesting Places and Facts</td><td class="desc">A short film every day about a remarkable place in India.</td><td class="status">Live</td><td class="link"><a href="#">Watch →</a></td></tr>
+      </tbody>
+    </table>
+  </div></section>
+</main>
+
+<section class="closing" id="contact"><div class="wrap">
+  <h2>Tell us the one task your team dreads.</h2>
+  <p>We'll come back with how we'd take it off your plate. Free, and no obligation.</p>
+  <a class="cta" href="#">Book a free call <span aria-hidden="true">→</span></a>
+</div></section>
+
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div class="fbrand"><a class="logo" href="#"><i aria-hidden="true"></i>AIVantageWorks</a><p>A small AI studio. We build our own AI products and help small businesses put the same tools to work.</p></div>
+    <div><h4>Services</h4><ul><li><a href="#">AI workflow review</a></li><li><a href="#">Automations</a></li><li><a href="#">Custom AI tools</a></li><li><a href="#">AI search visibility</a></li><li><a href="#">Website security</a></li></ul></div>
+    <div><h4>Products</h4><ul><li><a href="#">Site Shield</a></li><li><a href="#">InviteBeam</a></li><li><a href="#">CreateAndColor</a></li><li><a href="#">Trip Agent</a></li><li><a href="#">Interesting Places and Facts</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li><a href="#">support@aivantageworks.com</a></li><li><a href="#">Book a free call</a></li><li><a href="#">Report a security issue</a></li></ul></div>
+  </div>
+  <div class="legal">© 2026 AIVantageWorks</div>
+</div></footer>
+</body>
+</html>

@@ -40,7 +40,7 @@ export const SERVICES: Service[] = [
     slug: "workflow-review",
     tag: "Consult",
     title: "AI workflow review",
-    summary: "Find where AI saves real hours in your business.",
+    summary: "We sit with your team, see where the hours go, and give you a short plan ranked by payback.",
     body: "We sit with you and your team, map how work actually moves, and find the tasks where AI saves real hours. You get a short, plain-English plan ranked by effort and payback — useful even if you never hire us to build it.",
     points: ["Process mapping", "Tool & data check", "Prioritised roadmap"],
     forWho: "Teams who know AI could help, but not where to start.",
@@ -60,8 +60,8 @@ export const SERVICES: Service[] = [
   {
     slug: "automations",
     tag: "Build",
-    title: "Automations & integrations",
-    summary: "Connect your tools and let AI handle the in-between work.",
+    title: "Automations",
+    summary: "We connect the tools you already use and let AI handle the in-between work.",
     body: "We connect the tools you already use — email, forms, spreadsheets, CRM, calendar — and add AI where it helps: sorting, drafting, extracting, summarising. Your team keeps working the way they do; the busywork just disappears.",
     points: ["Lead intake & follow-up", "Inbox triage", "Docs → data"],
     forWho: "Businesses buried in email, forms and copy-paste.",
@@ -81,8 +81,8 @@ export const SERVICES: Service[] = [
   {
     slug: "agents",
     tag: "Build",
-    title: "Custom AI agents & tools",
-    summary: "Focused AI tools built around how your business works.",
+    title: "Custom AI tools",
+    summary: "When nothing off the shelf fits, a small tool built around how you work.",
     body: "When off-the-shelf doesn't fit, we build small, focused AI tools and agents for your business — internal assistants, customer-facing helpers, approval flows — with a human check wherever the stakes are real.",
     points: ["Internal assistants", "Customer-facing helpers", "Approval flows"],
     forWho: "Work that off-the-shelf tools don't fit.",
@@ -102,8 +102,8 @@ export const SERVICES: Service[] = [
   {
     slug: "ai-search-visibility",
     tag: "Grow",
-    title: "AI search visibility audit",
-    summary: "See what ChatGPT and other assistants say about you.",
+    title: "AI search visibility",
+    summary: "What ChatGPT and other assistants tell people about you, checked and fixed.",
     body: "Customers now ask ChatGPT and other AI assistants who to call. We check what those answers say about your business, document the evidence side by side, and fix what's wrong or missing. No ranking promises — just a clear record and a fix list.",
     points: ["Evidence-based report", "Fix list", "No ranking promises"],
     forWho: "Local businesses that customers find by asking AI.",
@@ -123,8 +123,8 @@ export const SERVICES: Service[] = [
   {
     slug: "website-security",
     tag: "Protect",
-    title: "Website security & uptime check",
-    summary: "Find the gaps that lead to hacks and outages, with fixes for your platform.",
+    title: "Website security",
+    summary: "The gaps that lead to hacks and outages, explained plainly and fixed with you.",
     body: "Our scanner looks at your site from the outside, the way an attacker would: HTTPS and certificates, security headers, email spoofing protection, exposed files, outdated software, and whether a CDN shields you from traffic spikes. It only reads public information and changes nothing. We turn the results into a plain-English fix list written for your platform, and can make the fixes with you. No \"unhackable\" promises — just a clear picture and a fix list.",
     points: ["Passive outside-in scan", "Platform-specific fixes", "No \"unhackable\" promises"],
     forWho: "Any business whose website takes leads, bookings or payments.",
@@ -159,10 +159,10 @@ export const IDEAS: [string, string][] = [
 ];
 
 export const STEPS: [string, string][] = [
-  ["Map", "A free call, then a working session to see how your team really spends its week."],
-  ["Pick", "Choose one workflow with a clear payback. Small first, so you see results fast."],
-  ["Build", "We build it on your tools, test it on real work, and keep you in the loop."],
-  ["Hand over", "Docs, training, and a simple way to adjust it. You own it — no lock-in."],
+  ["We start with a chat.", "You tell us what eats your week. No sales deck."],
+  ["We pick one thing.", "Something small with a clear payback, so you see it work fast."],
+  ["We build it with you.", "On your own tools, tested on real work, with you in the loop."],
+  ["You own it.", "Simple notes, a walkthrough, and no lock-in."],
 ];
 
 export const PRINCIPLES = [
@@ -178,6 +178,8 @@ export type Product = {
   status: ProductStatus;
   kind: string;
   body: string;
+  /** One line for the home-page table. */
+  short: string;
   href: string;
   cta: string;
 };
@@ -188,14 +190,16 @@ export const PRODUCTS: Product[] = [
     status: "Service",
     kind: "AI search visibility",
     body: "Our in-house audit tool for local businesses: records what AI assistants say about a business, side by side with the evidence, and turns it into a clear fix list.",
+    short: "Our in-house tool for checking what AI assistants say about a business.",
     href: "/services#ai-search-visibility",
     cta: "About the audit",
   },
   {
     name: "Site Shield",
-    status: "Early access",
+    status: "Live",
     kind: "Website security",
     body: "Our website security scanner: checks HTTPS, security headers, email spoofing protection, exposed files and outdated software, then gives a grade and copy-paste fixes for your platform.",
+    short: "A plain-English security check for any website.",
     href: "https://shield.aivantageworks.com/",
     cta: "Run a free scan",
   },
@@ -204,6 +208,7 @@ export const PRODUCTS: Product[] = [
     status: "Early access",
     kind: "AI agent",
     body: "Describe a trip in one sentence. The agent finds real flights and hotels, builds a plan around who's travelling, and books only after you approve.",
+    short: "Plans a trip from one sentence and books only after you approve.",
     href: "https://trip.aivantageworks.com/",
     cta: "Join early access",
   },
@@ -212,6 +217,7 @@ export const PRODUCTS: Product[] = [
     status: "Live",
     kind: "Web app",
     body: "Animated digital invitations with one-click RSVPs and a live guest dashboard. Free for small events, $5 for big ones.",
+    short: "Animated invitations with one-click RSVPs and a guest dashboard.",
     href: "https://www.invitebeam.com/",
     cta: "invitebeam.com",
   },
@@ -220,6 +226,7 @@ export const PRODUCTS: Product[] = [
     status: "Live",
     kind: "Web + iOS",
     body: "Turns a kid's idea into a printable coloring page in under a minute. Storybooks, party coloring books, and free teacher worksheets.",
+    short: "Turns a child's idea into a printable colouring page.",
     href: "https://createandcolor.aivantageworks.com/",
     cta: "Try it free",
   },
@@ -228,6 +235,7 @@ export const PRODUCTS: Product[] = [
     status: "Live",
     kind: "AI media",
     body: "A new short film every day about a remarkable, lesser-known place in India — with coordinates and the one fact that makes it special.",
+    short: "A short film every day about a remarkable place in India.",
     href: "https://dailyfacts.aivantageworks.com/",
     cta: "Watch today's place",
   },
